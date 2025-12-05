@@ -1,0 +1,28 @@
+# .github/workflows/deploy.yml
+name: Deploy to Server
+
+# Запускается при пуше в infra/cloud-setup
+on:
+  push:
+    branches:
+      - infra/cloud-setup
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_IP }}        # IP сервера
+          username: root
+          key: ${{ secrets.SSH_KEY }}           # SSH-ключ
+          script: |
+            cd /root/langchain-course || exit
+            git pull origin infra/cloud-setup
+            docker-compose down
+            docker-compose up -d --build
+            echo "Deployed: https://$(curl -s ifconfig.me)"
