@@ -1,0 +1,11 @@
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro    # ← ЭТО НОВОЕ
+      - ./nginx/certs:/etc/nginx/certs:ro              # ← И ЭТО
+    depends_on:
+      - frontend
+      - api
