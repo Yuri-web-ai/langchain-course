@@ -1,0 +1,51 @@
+# main.py
+from exercise import (
+    implement_set_api_key,
+    check_api_key,
+    implement_llama_4_model,
+    implement_llama_3_3_model,
+    implement_query_model
+)
+
+def main():
+    print("Groq Model Switcher (введи 'exit' для выхода)")
+    print("=" * 55)
+    
+    # Инициализация
+    implement_set_api_key("mock_api_key")
+    check_api_key()
+    print("API ключ установлен\n")
+
+    # Создаём модели один раз
+    llama4 = implement_llama_4_model()
+    llama33 = implement_llama_3_3_model()
+
+    print("Готов! Задавай вопросы:\n")
+
+    while True:
+        prompt = input("Ты: ").strip()
+        
+        if prompt.lower() in ["exit", "quit", "выход", "пока"]:
+            print("До свидания!")
+            break
+        if not prompt:
+            print("Напиши что-нибудь!")
+            continue
+
+        print("\nМодели думают...\n")
+        
+        # Получаем ответы
+        response4 = implement_query_model(llama4, prompt)
+        response33 = implement_query_model(llama33, prompt)
+
+        print(f"Llama 4 (быстрая, точная):")
+        print(f"   {response4}\n")
+        
+        print(f"Llama 3.3 (умная, креативная):")
+        print(f"   {response33}\n")
+        
+        print("-" * 60)
+
+# Запускаем только если файл запущен напрямую
+if __name__ == "__main__":
+    main()
