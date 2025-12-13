@@ -1,0 +1,34 @@
+0. Разовая настройка Git + GitHub
+# 1. Представиться Git'у (один раз на машине)
+git config --global user.name "Yuri Borodin"
+git config --global user.email "твой_email_на_GitHub"
+
+# 2а. Если репозиторий уже есть на GitHub → просто клонируем
+git clone https://github.com/USER/REPO.git
+cd REPO
+
+# 2б. Если репозитория ещё нет → инициализируем локально
+git init
+git remote add origin https://github.com/USER/REPO.git
+
+# 3. Убедиться, какая ветка основная
+git branch    # чаще всего main или master
+
+
+1) Отправлять из терминала VS Code все изменения (git CLI)
+# Посмотреть, что изменилось
+git status
+
+# Добавить все изменения
+git add .
+
+# Сделать коммит с сообщением
+git commit -m "Короткое внятное описание изменений"
+
+# Отправить на GitHub (первый раз может потребоваться имя ветки)
+git push origin main     # если ветка main
+# или
+git push origin master   # если ветка master
+
+# В следующий раз чаще всего достаточно просто
+git push
