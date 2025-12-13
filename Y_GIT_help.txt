@@ -19,6 +19,9 @@ git branch    # чаще всего main или master
 # Посмотреть, что изменилось
 git status
 
+git checkout -b feature/langchain - Создать новую ветку и в нее перейти
+проверка git branch
+
 # Добавить все изменения
 git add .
 
