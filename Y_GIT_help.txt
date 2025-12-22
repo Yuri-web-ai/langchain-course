@@ -28,6 +28,8 @@ git add .
 # Сделать коммит с сообщением
 git commit -m "Короткое внятное описание изменений"
 
+git push -u origin feature/react!!!!
+
 # Отправить на GitHub (первый раз может потребоваться имя ветки)
 git push origin main     # если ветка main
 # или
