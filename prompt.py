@@ -17,5 +17,5 @@ Begin!
 
 Question: {input}
 
-{agent_scratchpad}
+Thought: {agent_scratchpad}
 """
